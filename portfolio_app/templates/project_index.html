@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}<title>Project List</title>{% endblock %}
+{% block content %}
+
+
+<!-- Page content -->
+<div class="w3-content w3-padding" style="max-width:1564px; margin-top: 100px; padding-top: 80px;">
+  <div class="w3-row-padding w3-grayscale">
+    {% for project in projects %}
+        <div class="w3-col l3 m6 w3-margin-bottom">
+          <img src="{{ project.image.url }}" alt="{{ project.title }}" style="width:100%">
+          <h3>{{ project.title }}</h3>
+          <p class="w3-opacity">{{ project.technology }}</p>
+          <p style="display: inline;">Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+          <p>
+            <a href="{% url 'project_detail' project.pk %}">
+                <button class="w3-button w3-light-grey w3-block">More Details</button></p>
+            </a>
+        </div>
+    {% endfor %}
+  </div>
+
+
+{% endblock %}
